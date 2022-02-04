@@ -39,13 +39,17 @@ export class StoreComponent implements OnInit {
   changePageSize(newSize){
     this.productsPerPage = Number((newSize.target as HTMLInputElement).value);
     this.changePage(1);
-    console.log(this.pageNumbers);
   }
 
-  get pageNumbers(): number[] {
-    return Array(Math.ceil(this.repository
-      .getProducts(this.selectedCategory).length / this.productsPerPage))
-        .fill(0).map((x, i) => i+1);
+  get pageCount(): number {
+    return Math.ceil(this.repository.getProducts(this.selectedCategory).length / this.productsPerPage);
   }
+
+  // potrzebne do *ngFor - przed dodaniem własnej dyrektywy 
+  // get pageNumbers(): number[] {
+  //   return Array(Math.ceil(this.repository
+  //     .getProducts(this.selectedCategory).length / this.productsPerPage))
+  //       .fill(0).map((x, i) => i+1);
+  // }
 
 }
