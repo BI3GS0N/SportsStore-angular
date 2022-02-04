@@ -21,7 +21,8 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "noImplicitAny": false //kurde nie wiem 
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
