@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col bg-dark text-white">
             <a class="navbar-brand">SKLEP SPORTOWY</a>
+            <app-cart-summary></app-cart-summary>
         </div>
     </div>
     <div class="row">
@@ -24,6 +25,9 @@
                 </h4>
                 <div class="card-text bg-white p-1 text-dark">
                     {{product.description}}
+                    <button class="btn btn-success btn-sm float-right" (click)="addProductToCart(product)">
+                        Dodaj do koszyka
+                    </button>
                 </div>
             </div>
         </div>
