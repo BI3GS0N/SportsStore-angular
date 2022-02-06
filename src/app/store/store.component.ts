@@ -49,7 +49,7 @@ export class StoreComponent implements OnInit {
 
   addProductToCart(product: Product){
     this.cart.addLine(product);
-    this.router.navigateByUrl("/cart")
+    this.router.navigateByUrl("/cart");
   }
 
   // potrzebne do *ngFor - przed dodaniem własnej dyrektywy 

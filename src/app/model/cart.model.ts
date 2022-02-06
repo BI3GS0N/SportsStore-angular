@@ -19,10 +19,10 @@ export class Cart {
         this.recalculate();
     }
 
-    updateQuantity(product: Product, quantity: number) {
+    updateQuantity(product: Product, quantity: number | any) {
         let line = this.lines.find(line => line.product.id == product.id);
         if(line != undefined){
-            line.quantity = Number(quantity)
+            line.quantity = Number((quantity.target as HTMLInputElement).value)
         }
         this.recalculate();
     }
