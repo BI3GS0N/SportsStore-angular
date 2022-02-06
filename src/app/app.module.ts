@@ -6,6 +6,11 @@ import { StoreModule } from './store/store.module';
 
 import { registerLocaleData } from '@angular/common'; 
 import localePL from '@angular/common/locales/pl'; 
+import { RouterModule } from '@angular/router';
+import { StoreComponent } from './store/store.component';
+import { CartDetailComponent } from './store/cart-detail/cart-detail.component';
+import { CheckoutComponent } from './store/checkout/checkout.component';
+import { StoreFirstGuard } from './storeFirst.guard';
 registerLocaleData(localePL); 
 
 @NgModule({
@@ -14,9 +19,15 @@ registerLocaleData(localePL);
   ],
   imports: [
     BrowserModule,
-    StoreModule
+    StoreModule,
+    RouterModule.forRoot([
+      {path: "store", component: StoreComponent, canActivate: [StoreFirstGuard]},
+      {path: "cart", component: CartDetailComponent, canActivate: [StoreFirstGuard]},
+      {path: "checkout", component: CheckoutComponent, canActivate: [StoreFirstGuard]},
+      {path: "**", redirectTo: "/store"}
+    ])
   ],
-  providers: [],
+  providers: [StoreFirstGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
