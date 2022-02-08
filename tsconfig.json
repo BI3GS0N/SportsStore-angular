@@ -22,7 +22,8 @@
       "es2020",
       "dom"
     ],
-    "noImplicitAny": false //kurde nie wiem 
+    "noImplicitAny": false, //kurde nie wiem 
+    "strictPropertyInitialization": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

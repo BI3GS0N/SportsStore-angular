@@ -33,6 +33,12 @@ export class Cart {
         this.recalculate();
     }
 
+    clear(){
+        this.lines = [];
+        this.itemCount = 0;
+        this.cartPrice = 0;
+    }
+
     private recalculate() {
         this.itemCount = 0;
         this.cartPrice = 0;
