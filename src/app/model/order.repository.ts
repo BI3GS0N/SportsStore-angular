@@ -5,7 +5,7 @@ import { StaticDataSource } from "./static.datasource";
 
 @Injectable()
 export class OrderRepository {
-    private orders:Order[] = [];
+    private orders: Order[] = [];
 
     constructor(private dataSource: StaticDataSource) {}
 

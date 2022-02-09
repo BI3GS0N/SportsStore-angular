@@ -18,7 +18,7 @@ export class CheckoutComponent implements OnInit {
     this.submitted = true;
     if(form.valid) {
       this.repository.saveOrder(this.order).subscribe(order => {
-        order.clear();
+        this.order.clear();
         this.orderSent = true;
         this.submitted = false;
       });
