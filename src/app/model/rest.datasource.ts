@@ -43,7 +43,7 @@ export class RestDataSource {
         return this.http.put<Product>(`${this.baseUrl}products/${product.id}`, this.getOptions());
     }
 
-    deleteProduct(id: number): Observable<Product>{
+    deleteProduct(id: number | undefined): Observable<Product>{
         return this.http.delete<Product>(`${this.baseUrl}products/${id}`,this.getOptions());
     }
 
@@ -55,8 +55,9 @@ export class RestDataSource {
         return this.http.delete<Order>(`${this.baseUrl}orders/${id}`, this.getOptions());
     }
 
-    updateOrder(order: Order): Observable<Order>{
-        return this.http.put<Order>(`${this.baseUrl}orders/${order.id}`, this.getOptions());
+    updateOrder(order: Order): Observable<Order> {
+        return this.http.put<Order>(`${this.baseUrl}orders/${order.id}`,
+            order, this.getOptions());
     }
 
     private getOptions(){

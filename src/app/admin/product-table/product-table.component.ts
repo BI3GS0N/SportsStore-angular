@@ -15,7 +15,7 @@ export class ProductTableComponent implements OnInit {
     return this.repository.getProducts();
   }
 
-  deleteProduct(id: number){
+  deleteProduct(id: number | undefined){
     this.repository.deleteProduct(id);
   }
 
