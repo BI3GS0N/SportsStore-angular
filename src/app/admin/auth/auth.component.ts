@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/model/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -12,16 +13,21 @@ export class AuthComponent implements OnInit {
   password: string;
   errorMessage: string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private auth: AuthService) {}
 
   authenticate(form: NgForm) {
     if (form.valid) {
-    // Przeprowadzanie uwierzytelniania.
+    this.auth.authenticate(this.username, this.password)
+    .subscribe(response => {
+    if (response) {
     this.router.navigateByUrl("/admin/main");
-    } else {
-      this.errorMessage = "Nieprawidłowe dane.";
     }
-  }
+    this.errorMessage = "Uwierzytelnienie zakończyło się niepowodzeniem.";
+    })
+    } else {
+    this.errorMessage = "Nieprawidłowe dane.";
+    }
+    }
 
   ngOnInit(): void {
   }

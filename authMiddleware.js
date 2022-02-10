@@ -41,7 +41,9 @@ module.exports = function (req, res, next) {
         jwt.verify(token, APP_SECRET);
         next();
         return;
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     }
     res.statusCode = 401;
     res.end();
